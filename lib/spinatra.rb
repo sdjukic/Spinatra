@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 # Sinatra scaffolding gem
 require 'thor'
 require 'fileutils'
@@ -58,4 +56,3 @@ class Spinatra < Thor
 
 end
 
-Spinatra.start
