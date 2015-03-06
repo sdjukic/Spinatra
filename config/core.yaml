@@ -1,12 +1,12 @@
 ---
 
 project_directories:  
-    - "./#{name.capitalize}"
-    - "./#{name.capitalize}/public"
-    - "./#{name.capitalize}/public/images"
-    - "./#{name.capitalize}/public/javascripts"
-    - "./#{name.capitalize}/public/stylesheets"
-    - "./#{name.capitalize}/views" 
+    - "#{name.capitalize}"
+    - "#{name.capitalize}/public"
+    - "#{name.capitalize}/public/images"
+    - "#{name.capitalize}/public/javascripts"
+    - "#{name.capitalize}/public/stylesheets"
+    - "#{name.capitalize}/views" 
 
 files: 
     - "#{name.capitalize}.rb"

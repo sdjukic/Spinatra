@@ -4,4 +4,9 @@ require 'spinatra'
 
 begin
   Spinatra.start
+#rescue Interrupt => e 
+#	puts 'Quitting'
+#	exit 1
+#rescue SystemExit => e 
+#	exit e.status
 end
