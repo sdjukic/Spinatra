@@ -20,7 +20,8 @@ class Spinatra < Thor
     "files" =>  ["#{name.capitalize}.rb",
                  "Gemfile",
                  "README.md",
-                 "config.ru"],
+                 "config.ru",
+                 "views/layout.slim"],
 
     "#{name.capitalize}" => ["$:.unshift File.expand_path('../lib', __FILE__)\n",
                     "require 'sinatra/base'\n",
@@ -39,14 +40,24 @@ class Spinatra < Thor
     "README.md" => ["## #{name.capitalize}"],
 
     "config.ru" => ["require './#{name.capitalize}'\n",
-                    "\nrun #{name.capitalize}.new"]}
+                    "\nrun #{name.capitalize}.new"],
+
+    "views/layout.slim" => ["doctype html\n",
+                           "html\n",
+                           "\nhead\n",
+                           "    title #{name.capitalize} App\n",
+                           "\nbody",
+                           "\n    == yield"]
+                  }
 
     #data = YAML.load_file(CONF_FILE)
 
    
     data["project_directories"].each do |dir| 
       unless File.directory?(dir)
-        FileUtils.mkdir(dir) 
+        puts "Creating directory \e[32m #{dir} \e[0m" if FileUtils.mkdir(dir) 
+      else
+        puts "Skipped creating \e[31m #{dir} \e[0m"
       end
     end
     
@@ -55,9 +66,14 @@ class Spinatra < Thor
     data['files'].each do |f|
       unless File.exist?(f)
         source_file = File.new("#{f}", 'w')
+        if source_file
+          puts "Creating file \e[32m #{f} \e[0m"   
+        end
         if data["#{f}"]
           data["#{f}"].each { |line| source_file.write line }
-        end  
+        end
+      else
+        puts "Skipped creating \e[31m #{f} \e[0m"    
       end
     end
   end

@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name        = 'spinatra'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.executables = ['spinatra']
-  s.date        = '2015-03-04'
+  s.date        = '2015-03-10'
   s.summary     = 'Scafolding for modular Sinatra applications.'
   s.description = 'Gem that will create files needed to start modular Sinatra app'
   s.authors     = ["Slavisa Djukic"]
