@@ -10,47 +10,48 @@ class Spinatra < Thor
   desc "new APP_NAME",  "Creates scaffold for modular Sinatra application."
   def new(name)
   	
-    data = {"project_directories" => ["#{name.capitalize}",
-                  "#{name.capitalize}/public",
-                  "#{name.capitalize}/public/images",
-                  "#{name.capitalize}/public/javascripts",
-                  "#{name.capitalize}/public/stylesheets",
-                  "#{name.capitalize}/views"], 
+    data = {
+      "project_directories" => ["#{name.capitalize}",
+                                "#{name.capitalize}/public",
+                                "#{name.capitalize}/public/images",
+                                "#{name.capitalize}/public/javascripts",
+                                "#{name.capitalize}/public/stylesheets",
+                                "#{name.capitalize}/views"], 
     
-    "files" =>  ["#{name.capitalize}.rb",
-                 "Gemfile",
-                 "README.md",
-                 "config.ru",
-                 "views/layout.slim"],
+      "files" =>  ["#{name.capitalize}.rb",
+                   "Gemfile",
+                   "README.md",
+                   "config.ru",
+                   "views/layout.slim"],
 
-    "#{name.capitalize}.rb" => ["$:.unshift File.expand_path('../lib', __FILE__)\n",
-                    "\nrequire 'sinatra/base'\n",
-                    "require 'slim'\n",
-                    "\nclass #{name.capitalize} < Sinatra:Base\n",
+      "#{name.capitalize}.rb" => ["$:.unshift File.expand_path('../lib', __FILE__)\n",
+                                  "\nrequire 'sinatra/base'\n",
+                                  "require 'slim'\n",
+                                  "\nclass #{name.capitalize} < Sinatra:Base\n",
+                                  "\nend"],
+
+      "Gemfile" => ["source 'https://rubygems.org'\n",
+                    "\ngem 'sinatra'",
+                    "\ngem 'rubocop'",
+                    "\ngem 'slim'",
+                    "\ngem 'puma'\n",
+                    "\ngroup :test do",
+                    "\n  gem 'rack-test'",
+                    "\n  gem 'rspec'",
                     "\nend"],
 
-    "Gemfile" => ["source 'https://rubygems.org'\n",
-               "\ngem 'sinatra'",
-               "\ngem 'rubocop'"
-               "\ngem 'slim'",
-               "\ngem 'puma'\n",
-               "\ngroup :test do",
-               "\n  gem 'rack-test'",
-               "\n  gem 'rspec'",
-               "\nend"],
+      "README.md" => ["## #{name.capitalize}"],
 
-    "README.md" => ["## #{name.capitalize}"],
+      "config.ru" => ["require './#{name.capitalize}'\n",
+                      "\nrun #{name.capitalize}.new"],
 
-    "config.ru" => ["require './#{name.capitalize}'\n",
-                    "\nrun #{name.capitalize}.new"],
-
-    "views/layout.slim" => ["doctype html\n",
-                           "html\n",
-                           "\nhead\n",
-                           "    title #{name.capitalize} App\n",
-                           "\nbody",
-                           "\n    == yield"]
-                  }
+      "views/layout.slim" => ["doctype html\n",
+                              "html\n",
+                              "\nhead\n",
+                              "    title #{name.capitalize} App\n",
+                              "\nbody",
+                              "\n    == yield"]
+  }
 
     #data = YAML.load_file(CONF_FILE)
 
