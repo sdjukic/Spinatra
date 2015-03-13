@@ -23,14 +23,16 @@ class Spinatra < Thor
                  "config.ru",
                  "views/layout.slim"],
 
-    "#{name.capitalize}" => ["$:.unshift File.expand_path('../lib', __FILE__)\n",
-                    "require 'sinatra/base'\n",
+    "#{name.capitalize}.rb" => ["$:.unshift File.expand_path('../lib', __FILE__)\n",
+                    "\nrequire 'sinatra/base'\n",
+                    "require 'slim'\n",
                     "\nclass #{name.capitalize} < Sinatra:Base\n",
                     "\nend"],
 
     "Gemfile" => ["source 'https://rubygems.org'\n",
                "\ngem 'sinatra'",
-               "\ngem 'rubocop'",
+               "\ngem 'rubocop'"
+               "\ngem 'slim'",
                "\ngem 'puma'\n",
                "\ngroup :test do",
                "\n  gem 'rack-test'",
