@@ -11,4 +11,4 @@ It is becoming opinionated, I am using slim as a default templating language. An
 `gem install spinatra-<version_number>.gem`
 
 ## Usage
-`spinatra new <project_name>`
+`spinatra new <project_name> [ -v| --verbose ]`
