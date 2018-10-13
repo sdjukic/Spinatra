@@ -33,7 +33,7 @@ class Spinatra < Thor
         "$:.unshift File.expand_path('../lib', __FILE__)\n",
         "\nrequire 'sinatra/base'\n",
         "require 'slim'\n",
-        "\nclass #{name.capitalize} < Sinatra:Base\n",
+        "\nclass #{name.capitalize} < Sinatra::Base\n",
         "\nend"],
 
       "Gemfile" => [
